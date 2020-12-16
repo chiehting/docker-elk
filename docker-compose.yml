@@ -19,3 +19,17 @@ services:
     environment:
       ELASTICSEARCH_URL: http://es01:9200
       ELASTICSEARCH_HOSTS: http://es01:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.1
+    environment:
+      SERVER_NAME: kibana
+      ELASTICSEARCH_HOSTS: "http://es01:9200/"
+#      ELASTICSEARCH_HOSTS: "http://es01:9200/"
+      ELASTICSEARCH_REQUESTTIMEOUT: "300000"
+      XPACK_SECURITY_ENABLED: "true"
+      ELASTICSEARCH_USERNAME: "elastic"
+      ELASTICSEARCH_PASSWORD: "elasticpassword"
+    network_mode: "host"
+#    ports:
+#      - '80:5601'
